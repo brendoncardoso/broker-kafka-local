@@ -13,7 +13,7 @@ spec:
   triggers:
     - type: kafka
       metadata:
-        bootstrapServers: host.minikube.internal:9092
+        bootstrapServers: 192.168.49.1:29092
         consumerGroup: broker-protocol-entries-local
         topic: broker-protocol-entries-dev
         lagThreshold: "10"
