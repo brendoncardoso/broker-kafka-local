@@ -11,6 +11,7 @@ spec:
   selector:
     matchLabels:
       app: brokerone-kafka-local
+      app.kubernetes.io/name: brokerone-kafka-local
   strategy:
     type: RollingUpdate
     rollingUpdate:
