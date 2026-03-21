@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/brendoncardoso/broker-kafka-local
     targetRevision: HEAD
-    path: apps/brokerone-kafka-local
+    path: .
   destination:
     server: https://kubernetes.default.svc
     namespace: kafka-local
