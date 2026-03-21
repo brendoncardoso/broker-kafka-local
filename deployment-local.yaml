@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: brokerone-kafka-local
+  namespace: kafka-local
+  labels:
+    app: brokerone-kafka-local
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: brokerone-kafka-local
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: brokerone-kafka-local
+    spec:
+      terminationGracePeriodSeconds: 150
+      containers:
+        - name: brokerone-kafka-local
+          image: brokerone-kafka:local
+          imagePullPolicy: IfNotPresent
+          lifecycle:
+            preStop:
+              exec:
+                command: ["/bin/sh", "-c", "sleep 10"]
+          envFrom:
+            - secretRef:
+                name: brokerone-kafka-local-env
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "300Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"

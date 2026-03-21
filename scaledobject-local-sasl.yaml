@@ -1,0 +1,23 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: brokerone-kafka-local-scaledobject
+  namespace: kafka-local
+spec:
+  scaleTargetRef:
+    name: brokerone-kafka-local
+  pollingInterval: 15
+  cooldownPeriod: 60
+  minReplicaCount: 1
+  maxReplicaCount: 5
+  triggers:
+    - type: kafka
+      metadata:
+        bootstrapServers: host.minikube.internal:9092
+        consumerGroup: broker-protocol-entries-local
+        topic: broker-protocol-entries-dev
+        lagThreshold: "10"
+        offsetResetPolicy: latest
+        scaleToZeroOnInvalidOffset: "true"
+      authenticationRef:
+        name: keda-trigger-auth-kafka-local
