@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: brokerone-kafka-local
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/brendoncardoso/broker-kafka-local
+    targetRevision: HEAD
+    path: apps/brokerone-kafka-local
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: kafka-local
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
