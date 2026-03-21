@@ -19,5 +19,5 @@ spec:
         lagThreshold: "10"
         offsetResetPolicy: latest
         scaleToZeroOnInvalidOffset: "true"
-      authenticationRef:
-        name: keda-trigger-auth-kafka-local
+      #authenticationRef:
+        #name: keda-trigger-auth-kafka-local
