@@ -5,6 +5,7 @@ metadata:
   namespace: kafka-local
   labels:
     app: brokerone-kafka-local
+    app.kubernetes.io/name: brokerone-kafka-local
 spec:
   replicas: 1
   selector:
@@ -19,6 +20,7 @@ spec:
     metadata:
       labels:
         app: brokerone-kafka-local
+        app.kubernetes.io/name: brokerone-kafka-local
     spec:
       terminationGracePeriodSeconds: 150
       containers:
