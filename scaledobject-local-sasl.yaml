@@ -14,7 +14,7 @@ spec:
     - type: kafka
       metadata:
         bootstrapServers: 192.168.49.1:29092
-        consumerGroup: broker-protocol-entries-local
+        consumerGroup: broker-protocol-entries-dev
         topic: broker-protocol-entries-dev
         lagThreshold: "10"
         offsetResetPolicy: latest
