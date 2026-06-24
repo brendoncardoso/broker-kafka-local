@@ -22,6 +22,7 @@ spec:
         app: brokerone-kafka-local
         app.kubernetes.io/name: brokerone-kafka-local
     spec:
+      serviceAccountName: kafka-job-creator
       terminationGracePeriodSeconds: 150
       containers:
         - name: brokerone-kafka-local

@@ -1,0 +1,30 @@
+piVersion: v1
+kind: ServiceAccount
+metadata:
+  name: kafka-job-creator
+  namespace: kafka-local
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: kafka-job-creator-role
+  namespace: kafka-local
+rules:
+  - apiGroups: ["batch"]
+    resources: ["jobs"]
+    verbs: ["create", "get", "list"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: kafka-job-creator-binding
+  namespace: kafka-local
+subjects:
+  - kind: ServiceAccount
+    name: kafka-job-creator
+    namespace: kafka-local
+roleRef:
+  kind: Role
+  name: kafka-job-creator-role
+  apiGroup: rbac.authorization.k8s.io
+ 
