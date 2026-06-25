@@ -13,6 +13,9 @@ rules:
   - apiGroups: ["batch"]
     resources: ["jobs"]
     verbs: ["create", "get", "list"]
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["get"]
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
@@ -27,4 +30,3 @@ roleRef:
   kind: Role
   name: kafka-job-creator-role
   apiGroup: rbac.authorization.k8s.io
- 
